@@ -1,0 +1,64 @@
+Anotações tiradas de: https://noic.com.br/materiais-informatica/curso/graphs-02/
+
+DFS e BFS
+- Ambos têm complexidade O(V + A) 
+
+DFS 
+- Busca por profundidade:
+    (todos os vértices iniciam marcados como não visitados)
+    Começa em um vértice;
+    Marca como visitado;
+    Para cada vizinho: 
+        Verifica se já foi visitado;
+        Se não foi visitado:
+            marca como visitado;
+            aplica DFS nele;
+
+- É uma função recursiva
+- Pseudo código DFS:
+    // componente[i] se trata da componente do vértice i
+    // inicialmente, componente[i] = -1 para todo vértice
+    // faremos a DFS como sendo uma função recursiva
+    // antes de chamar a DFS no primeiro nó, definimos sua componente
+    
+    DFS(vértice X):
+        para todo V vizinho a X:
+            se (componente[V] == -1):
+                componente[V] = componente[X]
+                DFS(V)
+
+BFS
+- Busca por largura:
+    (todos os vértices iniciam marcados como não visitados)
+    Começa em um vértice X; 
+    insere o vértice na fila (a fila estava vazia);
+    Marca como visitado;
+    Enquanto a fila tem elementos:
+        Pega o primeiro da fila;
+        Tira da fila;
+        Para cada vizinho:
+            Verifica se foi visitado;
+            Se não foi visitado:
+                Marca como visitado;
+                Insere no fim da fila;
+
+- Não é uma função recursiva;
+- Utiliza fila (queue);
+- Pseudo código BFS:
+    //  o código a seguir é uma BFS partindo do vértice X
+    //  o array componente está inicializado para -1 em todas suas casas
+
+    fila.insere(X)
+    componente[X] := valor
+
+    enquanto (fila.tamanho > 0) faça:
+
+        //vamos trabalhar com o primeiro da fila
+        V = fila.frente
+        fila.remove_frente
+        
+        para todo Y vizinho de V, faça:
+            se (componente[Y] = -1):
+                componente[Y] = componente[V]
+                fila.insere(Y)
+
